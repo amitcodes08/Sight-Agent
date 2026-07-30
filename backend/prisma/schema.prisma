@@ -1,0 +1,46 @@
+// ============================================================
+// SightAgent — Prisma Schema (Skeleton)
+// ============================================================
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+/// A captured browser event with DOM snapshot and optional screenshot
+model Event {
+  id              String   @id @default(cuid())
+  timestamp       DateTime @default(now())
+  url             String
+  title           String   @default("")
+  eventType       String   // "snapshot" | "user-event" | "periodic"
+  domSnapshot     String   // JSON string of DOMSnapshot
+  screenshotPath  String?  // Path to saved screenshot file
+  metadata        String   @default("{}") // JSON string of CaptureMetadata
+  compressed      Boolean  @default(false)
+
+  analyses        Analysis[]
+
+  @@index([timestamp])
+  @@index([url])
+}
+
+/// VLM analysis result for an event
+model Analysis {
+  id              String   @id @default(cuid())
+  eventId         String
+  event           Event    @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  vlmResponse     String   // Full VLM response text
+  model           String   // Model identifier used
+  promptTokens    Int      @default(0)
+  completionTokens Int     @default(0)
+  totalTokens     Int      @default(0)
+  timestamp       DateTime @default(now())
+
+  @@index([eventId])
+  @@index([timestamp])
+}
