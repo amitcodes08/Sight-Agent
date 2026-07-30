@@ -1,5 +1,3 @@
-import React from 'react';
-
 export default function App() {
   return (
     <div className="min-h-screen bg-sight-bg text-white p-4">
