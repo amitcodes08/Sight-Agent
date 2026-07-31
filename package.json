@@ -4,18 +4,21 @@
   "private": true,
   "description": "SightAgent — An open-source visual AI agent Chrome extension",
   "scripts": {
-    "dev:extension": "pnpm --filter extension dev",
-    "dev:backend": "pnpm --filter backend dev",
-    "dev": "pnpm run dev:backend & pnpm run dev:extension",
-    "build:extension": "pnpm --filter extension build",
-    "build:backend": "pnpm --filter backend build",
-    "build": "pnpm run build:extension && pnpm run build:backend",
-    "lint": "pnpm -r run lint",
-    "clean": "pnpm -r run clean"
+    "dev:extension": "npm run dev -w extension",
+    "dev:backend": "npm run dev -w backend",
+    "dev": "npm run dev:backend & npm run dev:extension",
+    "build:extension": "npm run build -w extension",
+    "build:backend": "npm run build -w backend",
+    "build": "npm run build:extension && npm run build:backend",
+    "lint": "npm run lint -w extension && npm run lint -w backend",
+    "clean": "npm run clean -w extension && npm run clean -w backend"
   },
+  "workspaces": [
+    "extension",
+    "backend"
+  ],
   "engines": {
     "node": ">=18.0.0",
-    "pnpm": ">=8.0.0"
-  },
-  "packageManager": "pnpm@9.15.4"
+    "npm": ">=9.0.0"
+  }
 }

@@ -7,7 +7,7 @@ dotenv.config();
 const envSchema = z.object({
   PORT: z.string().default('3001'),
   DATABASE_URL: z.string().default('file:./dev.db'),
-  OPENAI_API_KEY: z.string().optional(),
+  GEMINI_API_KEY: z.string().optional(),
   SCREENSHOT_STORAGE_DIR: z.string().default(path.join(process.cwd(), 'data', 'screenshots')),
 });
 

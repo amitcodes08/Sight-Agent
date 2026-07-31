@@ -1,15 +1,15 @@
-import { ChatOpenAI } from '@langchain/openai';
+import { ChatGoogleGenerativeAI } from '@langchain/google-genai';
 import { HumanMessage, SystemMessage } from '@langchain/core/messages';
 import { config } from '../utils/config.js';
 import type { CapturePayload } from '../utils/validation.js';
 
-let visionModel: ChatOpenAI | null = null;
+let visionModel: ChatGoogleGenerativeAI | null = null;
 
-if (config.OPENAI_API_KEY) {
-  visionModel = new ChatOpenAI({
-    modelName: 'gpt-4o-mini',
+if (config.GEMINI_API_KEY) {
+  visionModel = new ChatGoogleGenerativeAI({
+    model: 'gemini-2.0-flash-exp',
     temperature: 0,
-    openAIApiKey: config.OPENAI_API_KEY,
+    apiKey: config.GEMINI_API_KEY,
   });
 }
 
@@ -56,7 +56,7 @@ ${JSON.stringify(payload.domSnapshot.elements.slice(0, 50), null, 2)}
    */
   static async analyzePayload(payload: CapturePayload) {
     if (!visionModel) {
-      throw new Error('VLM not configured (missing OPENAI_API_KEY)');
+      throw new Error('VLM not configured (missing GEMINI_API_KEY)');
     }
 
     const systemMsg = new SystemMessage(

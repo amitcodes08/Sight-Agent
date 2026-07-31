@@ -37,13 +37,13 @@ ingestRouter.post('/ingest', async (req, res) => {
     console.log(`[SightAgent:Backend] Ingested event ${event.id} from ${event.url}`);
 
     // If configured with an API key, trigger async analysis in background
-    if (config.OPENAI_API_KEY) {
+    if (config.GEMINI_API_KEY) {
       // Fire and forget, don't await
       LangChainService.analyzePayload(validatedPayload)
         .then(result => {
           return StorageService.saveAnalysis(event.id, {
             vlmResponse: result.content,
-            model: 'gpt-4o-mini',
+            model: 'gemini-2.0-flash-exp',
             promptTokens: result.usage.promptTokens,
             completionTokens: result.usage.completionTokens,
             totalTokens: result.usage.totalTokens
