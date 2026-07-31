@@ -25,9 +25,16 @@ app.get('/api/health', (_req, res) => {
   });
 });
 
-// Routes will be added in Step 4
-// app.use('/api', ingestRouter);
-// app.use('/api', analysisRouter);
+import { ingestRouter } from './routes/ingest.route.js';
+import { analysisRouter } from './routes/analysis.route.js';
+import { config } from './utils/config.js';
+
+// Routes
+app.use('/api', ingestRouter);
+app.use('/api/analysis', analysisRouter);
+
+// Serve screenshots statically
+app.use('/screenshots', express.static(config.SCREENSHOT_STORAGE_DIR));
 
 app.listen(PORT, () => {
   console.log(`[SightAgent:Backend] Server running on http://localhost:${PORT}`);

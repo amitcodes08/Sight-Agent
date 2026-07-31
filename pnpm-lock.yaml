@@ -44,6 +44,9 @@ importers:
       '@types/lz-string':
         specifier: ^1.5.0
         version: 1.5.0
+      '@types/node':
+        specifier: ^26.1.2
+        version: 26.1.2
       prisma:
         specifier: ^6.1.0
         version: 6.19.3(typescript@5.9.3)
@@ -2414,7 +2417,7 @@ snapshots:
 
   '@types/node-fetch@2.6.13':
     dependencies:
-      '@types/node': 18.19.130
+      '@types/node': 26.1.2
       form-data: 4.0.6
 
   '@types/node@18.19.130':
