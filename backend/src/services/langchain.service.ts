@@ -7,7 +7,7 @@ let visionModel: ChatGoogleGenerativeAI | null = null;
 
 if (config.GEMINI_API_KEY) {
   visionModel = new ChatGoogleGenerativeAI({
-    model: 'gemini-1.5-flash',
+    model: 'gemini-2.5-flash',
     temperature: 0,
     apiKey: config.GEMINI_API_KEY,
   });

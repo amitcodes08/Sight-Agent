@@ -14,8 +14,8 @@
     "db:studio": "prisma studio"
   },
   "dependencies": {
-    "@langchain/core": "^0.3.25",
-    "@langchain/google-genai": "^0.1.7",
+    "@langchain/core": "^1.2.0",
+    "@langchain/google-genai": "^2.2.0",
     "@prisma/client": "^6.1.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
