@@ -55,8 +55,8 @@ SightAgent uses Prisma with a local SQLite database to store captured events and
 
 1. From the root directory, generate the Prisma client and push the schema to the database:
    ```bash
-   npm run db:generate -w backend
-   npm run db:push -w backend
+   npm run db:generate
+   npm run db:push
    ```
 
 ---

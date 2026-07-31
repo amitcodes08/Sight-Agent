@@ -11,7 +11,9 @@
     "build:backend": "npm run build -w backend",
     "build": "npm run build:extension && npm run build:backend",
     "lint": "npm run lint -w extension && npm run lint -w backend",
-    "clean": "npm run clean -w extension && npm run clean -w backend"
+    "clean": "npm run clean -w extension && npm run clean -w backend",
+    "db:generate": "npm run db:generate -w backend",
+    "db:push": "npm run db:push -w backend"
   },
   "workspaces": [
     "extension",

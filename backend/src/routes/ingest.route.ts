@@ -43,7 +43,7 @@ ingestRouter.post('/ingest', async (req, res) => {
         .then(result => {
           return StorageService.saveAnalysis(event.id, {
             vlmResponse: result.content,
-            model: 'gemini-2.0-flash-exp',
+            model: 'gemini-1.5-flash',
             promptTokens: result.usage.promptTokens,
             completionTokens: result.usage.completionTokens,
             totalTokens: result.usage.totalTokens
